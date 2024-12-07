@@ -1,18 +1,35 @@
-.franklin-banner {
+.franklin-banner-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Two columns */
+  gap: 20px;
+  /* Space between cards */
   background-color: blue;
-  color: white;
-  text-align: center;
   padding: 20px;
   border-radius: 8px;
 }
 
-.banner-image {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 20px;
+.franklin-banner-card {
+  background: white;
+  color: black;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.banner-title {
-  font-size: 2rem;
-  font-weight: bold;
+.franklin-banner-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.franklin-banner-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.franklin-banner-card p {
+  font-size: 1rem;
 }
