@@ -102,7 +102,11 @@ async function createSelectMap(jsonURL) {
 
 // Decorate the block and initialize the table rendering
 export default async function decorate(block) {
-  const marksDataLink = block.querySelector('a[href$=".json"]');
+  // const marksDataLink = block.querySelector('a[href$=".json"]');
+  const marksDataLink = {
+    href: "https://main--test-eds--ankuragnihotri100.aem.page/marks.json",
+  }; // Replace with your actual URL
+
   const parentDiv = document.createElement("div");
   parentDiv.classList.add("marks-block");
 
