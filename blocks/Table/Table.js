@@ -9,13 +9,13 @@ function buildCell(rowIndex) {
 async function fetchSpreadsheetData(url) {
   try {
     const response = await fetch(url);
-    const data = await response.json();
+    const json = await response.json();
 
     // Parse rows from spreadsheet JSON
-    const rows = data.feed.entry.map((entry) => ({
-      name: entry.gsx$name.$t,
-      description: entry.gsx$description.$t,
-      price: entry.gsx$price.$t,
+    const rows = json.data.map((entry) => ({
+      Name: entry.Name,
+      Roll: entry.Roll,
+      Marks: entry.Marks,
     }));
 
     return rows;
@@ -27,7 +27,7 @@ async function fetchSpreadsheetData(url) {
 
 export default async function decorate(block) {
   const spreadsheetUrl =
-    "https://main--test-eds--ankuragnihotri100.aem.page/marks.json"; // Replace with your actual URL
+    "https://main--test-eds--ankuragnihotri100.aem.page/marks.json"; // Replace with your actual API endpoint
 
   const table = document.createElement("table");
   const thead = document.createElement("thead");
@@ -37,6 +37,7 @@ export default async function decorate(block) {
 
   // Fetch data from spreadsheet
   const rows = await fetchSpreadsheetData(spreadsheetUrl);
+  console.log(rows);
 
   if (rows.length === 0) {
     block.innerHTML =
@@ -46,7 +47,7 @@ export default async function decorate(block) {
 
   // Build table header
   const headerRow = document.createElement("tr");
-  ["Name", "Description", "Price"].forEach((header) => {
+  ["Name", "Roll", "Marks"].forEach((header) => {
     const th = buildCell(0);
     th.textContent = header;
     headerRow.append(th);
